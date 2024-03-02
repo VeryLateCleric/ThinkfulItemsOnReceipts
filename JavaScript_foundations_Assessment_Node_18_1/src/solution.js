@@ -43,9 +43,26 @@ function addProductToCart(product, cart = {}) {
   return(cart);
 }
 
-function calculateTotal() {}
+function calculateTotal(cart) {
+  let total = 0
+  for (const itemName in cart) {
+    // iterate through cart looking for item in cart that has specified itemName
+    if (cart.hasOwnProperty(itemName)) {
+      const item = cart[itemName];
+      // shorthand to use item instead of cart[itemName].quantity and .price which would take way too much space
+      total += (item.quantity * item.priceInCents)
+    }
+    // add to the total the quantity of the item times the price
+  }
+  return total;
+}
 
-function printReceipt() {}
+function printReceipt(cart) {
+  if (Object.keys(cart).length === 0) {
+    return null;
+    // start with simple null return if cart is empty
+  }
+}
 
 module.exports = {
   chooseItemByNameAndSize,
