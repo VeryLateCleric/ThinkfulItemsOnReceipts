@@ -71,7 +71,12 @@ function printReceipt(cart) {
       receipt += `${item.quantity}x${itemName} - $${total.toFixed(2)}\n`
     }
   }
-  console.log(receipt)
+// call calculateTotal as part of printReceipt and format into dollars
+// add total to receipt
+  const totalAmount = calculateTotal(cart) / 100
+  receipt += `Total: $${totalAmount.toFixed(2)}`
+ 
+  return receipt
  }
 
 module.exports = {
