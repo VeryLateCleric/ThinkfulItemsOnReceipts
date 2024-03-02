@@ -62,7 +62,17 @@ function printReceipt(cart) {
     return null;
     // start with simple null return if cart is empty
   }
-}
+  let receipt = '';     //start as empty string
+  // repeat calculateTotal
+  for (const itemName in cart) {
+    if (cart.hasOwnProperty(itemName)) {
+      const item = cart[itemName];
+      const total = item.quantity * item.priceInCents / 100;
+      receipt += `${item.quantity}x${itemName} - $${total.toFixed(2)}\n`
+    }
+  }
+  console.log(receipt)
+ }
 
 module.exports = {
   chooseItemByNameAndSize,
